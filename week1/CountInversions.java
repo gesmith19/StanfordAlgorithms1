@@ -10,6 +10,7 @@
 // Because of the large size of this array, you should implement the fast divide-and-conquer algorithm covered in 
 // the video lectures.
 //
+//
 // IntegerArray.txt has 2407905288 inversions.
 
 package week1algorithmn1;
@@ -185,25 +186,27 @@ public class CountInversions {
 	        	  System.out.println( "result: "+ Arrays.toString( result ) );
 	          }
 
-	      } //end of while loop
-
-	      if ( leftIndex == left.length )  //copy rest of elements in right array
-	      {
-	          for ( i = rightIndex; i < right.length; i++ )
-	          {
-	               result [k] = right[i];
-	               k++;
-	          }
-	       }
-	       else
+	       } //end of while loop
+	    
+	       // copy any entries from the left array that have not been merged
+	       if ( leftIndex < left.length )
 	       {
-	           for ( i = leftIndex; i < left.length; i++ )  // copy rest of elements in left array
-	           {
-	                   result [k] = left[i];
-	                   k++;
-	            }
+	    	  for ( i = leftIndex; i < left.length; i++ )
+	    	  {
+	    		  result[k] = left[i];
+	    		  k++;
+	    	  }
 	       }
-	      
+	       
+	       // copy any entries from the right array that have not been merged
+	       if ( rightIndex < right.length )
+	       {
+	    	   for ( i = rightIndex; i < right.length; i++ )
+	    	   {
+	    		   result[k] = right[i];
+	    		   k++;
+	    	   }
+	       }
 	      
 	       if ( debug )
               System.out.println( "count: " + count );
